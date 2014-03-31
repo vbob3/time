@@ -1,0 +1,12 @@
+name = Field time
+description = An implementation of a field
+package = Fields 
+core = 7.x
+
+
+; Information added by ourterr
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "Fields"
+datestamp = "1396256579"
+

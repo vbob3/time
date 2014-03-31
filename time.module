@@ -1,0 +1,44 @@
+<?php
+/**
+ * @file
+ * An field using the Field Types API.
+ */
+
+
+
+/***************************************************************
+ * Field Type API hooks
+ ***************************************************************/
+
+/**
+ * Implements hook_field_formatter_info().
+ *
+ * This tells Drupal what fields it applies to and what settings are available.
+ */
+function time_field_formatter_info() {
+  return array(
+    'time_formatter' => array(
+      'label' => t('Time countdown'),
+      'description' => t('special for Empiricus'),
+      'field types' => array('number_integer'), 
+	),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ * Hook where we actually do the formatting.
+ */
+function time_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $elements = array();
+  
+ foreach ($items as $delta => $item) {
+    $elements[$delta] = array(
+      '#markup' => $item['value']);    
+  }
+
+$elements['#attached']['js'][] = drupal_get_path('module', 'time') . '/time.field.js';
+    
+ 
+  return $elements;
+}
